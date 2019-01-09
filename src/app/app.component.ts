@@ -17,5 +17,5 @@ export class AppComponent {
     nameOne: 'Ana',
   }
 
-  
+  public isShown = true;
 }
