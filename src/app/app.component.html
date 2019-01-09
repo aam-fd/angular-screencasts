@@ -24,4 +24,7 @@
 <input type="text" #anchorColor>
 <button (click)="changeColor(anchorColor.value)">Изменить цвет текста</button>
 
+<h2>Nested component</h2>
+<app-nested [user]="girls"></app-nested>
+
 <router-outlet></router-outlet>

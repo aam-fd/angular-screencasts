@@ -9,7 +9,13 @@ export class AppComponent {
   
   public myColor: String = 'green';
 
-  public changeColor(color) {
+  public changeColor(color: String) {
     this.myColor = color;
   }
+
+  public girls = {
+    nameOne: 'Ana',
+  }
+
+  
 }
