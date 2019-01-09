@@ -19,4 +19,9 @@
   <li>Two-way data binding: [(ngModel)]=”value”</li>
 </ul>
 
+<h2>Anchor</h2>
+<p [style.color]="myColor">Введите название цвета, чтобы изменить цвет текста</p>
+<input type="text" #anchorColor>
+<button (click)="changeColor(anchorColor.value)">Изменить цвет текста</button>
+
 <router-outlet></router-outlet>

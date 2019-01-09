@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cook';
+  
+  public myColor: String = 'green';
+
+  public changeColor(color) {
+    this.myColor = color;
+  }
 }
