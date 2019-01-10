@@ -48,4 +48,10 @@
 <h2>Nested component -> transfer data (декоратор @Output)</h2>
 <p>td.2 from child/nested to parent (отобразится при клике): {{selectedUser.name}}</p>
 
+<h2>Projection через ng-content - удобно для гибкой проекции контента внутрь template</h2>
+<app-projection>
+  <b>Projection header</b>
+  <div>Some more information</div>
+</app-projection>
+
 <router-outlet></router-outlet>
