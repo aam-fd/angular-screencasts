@@ -24,8 +24,8 @@
 <input type="text" #anchorColor>
 <button (click)="changeColor(anchorColor.value)">Изменить цвет текста</button>
 
-<h2>Nested component</h2>
-<app-nested [user]="girls"></app-nested>
+<h2>Nested component -> transfer data (декоратор @Input)</h2>
+<app-nested [user]="girls[0]"></app-nested>
 
 <h2>Directive</h2>
 <p>Дополнительная инструкция к компоненту, которая расширяет компонент;
@@ -33,12 +33,19 @@
   <br>* - характерна для специальных директив</p>
 <p *ngIf="isShown">d.1 Работа директивы ngIf</p>
 <button (click)="isShown = !isShown">Переключатель true\false</button>
-
 <p>d.2 Работа директивы ngFor</p>
 <ul>
   <li *ngFor="let i of [1,2,3]">
     {{i}}
   </li>
 </ul>
+<ol>
+  <li *ngFor="let girl of girls">
+    <app-nested [user]="girl" (userSelectEvent)="selectedUser = girl"></app-nested>
+  </li>
+</ol>
+
+<h2>Nested component -> transfer data (декоратор @Output)</h2>
+<p>td.2 from child/nested to parent (отобразится при клике): {{selectedUser.name}}</p>
 
 <router-outlet></router-outlet>

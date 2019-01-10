@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nested',
@@ -8,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NestedComponent implements OnInit {
 
   @Input('user') admin: Object;
+  @Output() userSelectEvent: EventEmitter<any> = new EventEmitter;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectUser() {
+    this.userSelectEvent.emit();
   }
 
 }

@@ -8,14 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   
   public myColor: String = 'green';
+  public selectedUser;
 
   public changeColor(color: String) {
     this.myColor = color;
   }
 
-  public girls = {
-    nameOne: 'Ana',
-  }
+  public girls = [
+    { name: 'Ana' },
+    { name: 'Sofa' },
+    { name: 'Mila' },
+  ]
 
   public isShown = true;
 }
