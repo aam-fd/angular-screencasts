@@ -61,5 +61,23 @@
 <app-nested appColory 
             [user]="girls[0]"></app-nested>
 
+<h2>Forms</h2>
+f.1 FormControl для одного инпута<br>
+<input [formControl]="nameControl"><br>
+f.2 FormGroup для нескольких <br>
+<fieldset [formGroup]="fullNameControl">
+    <input formControlName="firstName" type="text">
+    <input formControlName="lastName" type="text">
+</fieldset>
+f.3 FormArray или FormBuilder для списка (например) инпутов
+<form [formGroup]="usersListControl">
+  <ul formArrayName="animals">
+    <li *ngFor="let animal of usersListControl.controls.animals.controls; let i = index">
+      <input formControlName="{{i}}">
+      <button (click)="removeUserControl()">Remove</button>
+    </li>
+  </ul>
+  <button (click)="addUserControl()">Add user</button>
+</form>
 
 <router-outlet></router-outlet>
