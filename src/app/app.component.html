@@ -46,12 +46,20 @@
 </ol>
 
 <h2>Nested component -> transfer data (декоратор @Output)</h2>
-<p>td.2 from child/nested to parent (отобразится при клике): {{selectedUser.name}}</p>
+<p>td.2 from child/nested to parent (отобразится при клике): {{selectedUser?.name}}</p>
 
-<h2>Projection через ng-content - удобно для гибкой проекции контента внутрь template</h2>
+<h2>Projection (проекция) через ng-content - удобно для гибкой проекции контента внутрь template</h2>
 <app-projection>
   <b>Projection header</b>
   <div>Some more information</div>
 </app-projection>
+
+<h2>Атрибут директива. Команда ng g d имя создает два файла .ts и .spec.ts.</h2>
+<div appColory>
+  Some text
+</div>
+<app-nested appColory 
+            [user]="girls[0]"></app-nested>
+
 
 <router-outlet></router-outlet>

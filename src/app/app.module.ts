@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NestedComponent } from './nested/nested.component';
 import { ProjectionComponent } from './projection/projection.component';
+import { ColoryDirective } from './directives/colory.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     NestedComponent,
-    ProjectionComponent
+    ProjectionComponent,
+    ColoryDirective
   ],
   imports: [
     BrowserModule,
