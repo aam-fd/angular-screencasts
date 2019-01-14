@@ -1,12 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import { Policy } from './common/models/policy';
+import { PoliciesService } from './common/services/policies.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
+  // subscription
+  public policies$: Observable<Policy[]>;
+  private _subscriptionPolicies: Subscription;
+
+  // ui data
+  public policies: Policy[] = [];
+
+
   
   public myColor: String = 'green';
   public selectedUser;
@@ -28,11 +40,19 @@ export class AppComponent implements OnInit {
   public usersListControl: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _policiesService: PoliciesService
   ) {
+    this.policies$ = this._policiesService.getPolicies();
   }
 
   ngOnInit() {
+    this._subscriptionPolicies = this.policies$.subscribe((policies: Policy[]) => {
+      console.log('policies', policies);
+      this.policies = policies;
+
+    });
+
     this.nameControl = new FormControl('Alex', [Validators.required, Validators.minLength(4)]); // первая [] - синхронный валидатор, вторая [] - асинхронный валидатор
     this.nameControl.valueChanges.subscribe((value) => console.log(value));
     console.log(this.nameControl);
@@ -61,6 +81,10 @@ export class AppComponent implements OnInit {
 
     this.usersListControl.valueChanges.subscribe((value) => console.log(value));
 
+  }
+
+  ngOnDestroy() {
+    this._subscriptionPolicies.unsubscribe();
   }
 
   public removeUserControl(index) {

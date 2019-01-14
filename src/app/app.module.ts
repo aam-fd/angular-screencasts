@@ -1,12 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NestedComponent } from './nested/nested.component';
 import { ProjectionComponent } from './projection/projection.component';
 import { ColoryDirective } from './directives/colory.directive';
+// import { policiesReducer } from './store/reducers/policies.reducer';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +25,10 @@ import { ColoryDirective } from './directives/colory.directive';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    // [StoreModule.forRoot({ policies: policiesReducer })],
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent]

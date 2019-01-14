@@ -80,4 +80,8 @@ f.3 FormArray или FormBuilder для списка (например) инпу
   <button (click)="addUserControl()">Add user</button>
 </form>
 
+<ul>
+  <li *ngFor="let policy of policies">{{ policy.name }}</li>
+</ul>
+
 <router-outlet></router-outlet>
