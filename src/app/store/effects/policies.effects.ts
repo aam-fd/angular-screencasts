@@ -20,17 +20,17 @@ export class ProductsEffects {
   }
   
   // Listen for the 'GET_PRODUCTS_PENDING' action
-  // @Effect()
-  // products$: Observable<Action> = this.actions$.pipe(
-  //   ofType(GET_POLICIES_PENDING),
-  //   switchMap(() =>
-  //     this._http.get(`${this._baseUrl}/products`)
-  //       .pipe(
-  //         map((res: { data: any[] }) => new GetPoliciesSuccess(res.data)),
-  //         catchError((err) => of(new GetPoliciesError(err)))
-  //       )
-  //   )
-  // );
+  @Effect()
+  products$: Observable<Action> = this.actions$.pipe(
+    ofType(GET_POLICIES_PENDING),
+    switchMap(() =>
+      this._http.get(`${this._baseUrl}/products`)
+        .pipe(
+          map((res: { data: any[] }) => new GetPoliciesSuccess(res.data)),
+          catchError((err) => of(new GetPoliciesError(err)))
+        )
+    )
+  );
 
 
 }

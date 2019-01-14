@@ -18,8 +18,6 @@ export class AppComponent implements OnInit, OnDestroy {
   // ui data
   public policies: Policy[] = [];
 
-
-  
   public myColor: String = 'green';
   public selectedUser;
 

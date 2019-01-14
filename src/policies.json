@@ -8,7 +8,43 @@
     "sum": 630000
   },
   {
-    "name": "Metro",
+    "name": "Metro1",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro2",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro3",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro4",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro5",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro6",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro7",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro8",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro9",
+    "sum": 35430000
+  },
+  {
+    "name": "Metro10",
     "sum": 35430000
   }
 ]
