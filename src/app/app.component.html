@@ -55,11 +55,30 @@
 </app-projection>
 
 <h2>Атрибут директива. Команда ng g d имя создает два файла .ts и .spec.ts.</h2>
-<div appColory>
+<div appColory #changecolor1="colory">
   Some text
 </div>
-<app-nested appColory 
-            [user]="girls[0]"></app-nested>
+<app-nested
+  appColory 
+  [user]="girls[0]"
+  #changecolor2="colory"
+  ></app-nested>
+
+<h2>Структурная директива.</h2>
+<p>* - обозначает структурную директиву. Что значит она может не только менять свойства элемента, но и манипулировать DOM (добавлять, удалять).</p>
+<div *ngFor="let delay of [1,2,3,4,5,6]">
+  <div *appDelay="delay">Some text 1</div>
+</div>
+<p>Запись через *appDelay идентична записи через обрамление ng-template и структурную директиву [appDelay]</p>
+  <ng-template [appDelay]="10">
+    <div>Some text 2</div>
+  </ng-template>
+
+<h2>Экспорт контроллера директивы (опция exportAs)</h2>
+<button (click)="changecolor1.setRandomColor(); changecolor2.setRandomColor()">Также меняет цвет атрибут директив</button>
+
+<h2>Динамические компоненты</h2>
+<p>Выводится по умолчанию в конце страницы</p>
 
 <h2>Forms</h2>
 f.1 FormControl для одного инпута<br>
@@ -80,6 +99,7 @@ f.3 FormArray или FormBuilder для списка (например) инпу
   <button (click)="addUserControl()">Add user</button>
 </form>
 
+<h2>Получение списка через сервис</h2>
 <ul>
   <li *ngFor="let policy of policies">{{ policy.name }}</li>
 </ul>

@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { NestedComponent } from './nested/nested.component';
 import { ProjectionComponent } from './projection/projection.component';
 import { ColoryDirective } from './directives/colory.directive';
+import { DelayDirective } from './directives/delay.directive';
+import { DynamicComponent } from './dynamic/dynamic.component';
 // import { policiesReducer } from './store/reducers/policies.reducer';
 
 
@@ -19,7 +21,12 @@ import { ColoryDirective } from './directives/colory.directive';
     AppComponent,
     NestedComponent,
     ProjectionComponent,
-    ColoryDirective
+    ColoryDirective,
+    DelayDirective,
+    DynamicComponent
+  ],
+  entryComponents: [
+    DynamicComponent,
   ],
   imports: [
     BrowserModule,
