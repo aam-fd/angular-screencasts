@@ -88,6 +88,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
+  public removeGirl(name: string) {
+    this._girlsService.remove(name);
+    this.girls = this._girlsService.getAll();
+  }
+
+  public addGirl(name: string) {
+    if (!name) {
+      return;
+    }
+    this._girlsService.add(name);
+    this.girls = this._girlsService.getAll();
+  }
+
   ngOnDestroy() {
     this._subscriptionPolicies.unsubscribe();
   }

@@ -11,4 +11,12 @@ export class GirlsDataService {
   public getAll() {
     return this.girls;
   }
+
+  public remove(name: string) {
+    return this.girls = this.girls.filter(g => g.name !== name);
+  }
+
+  public add(name: string) {
+    return this.girls.push({ name });
+  }
 }

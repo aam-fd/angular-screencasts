@@ -119,9 +119,13 @@ f.3 FormArray или FormBuilder для списка (например) инпу
   <button (click)="addUserControl()">Add user</button>
 </form>
 
-<h3>Получение списка через сервис</h3>
+<h3>Получение списка через сервис и Базовый CRUD</h3>
 <ul>
-  <li *ngFor="let policy of policies">{{ policy.name }}</li>
+  <li *ngFor="let girl of girls">
+    {{ girl.name }}
+    <span (click)="removeGirl(girl.name)">x</span>
+  </li>
 </ul>
+<input type="text" #girlName><button (click)="addGirl(girlName.value); girlName.value='';">Добавить!</button>
 
 <router-outlet></router-outlet>
