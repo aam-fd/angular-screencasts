@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Policy } from './common/models/policy';
 import { PoliciesService } from './common/services/policies.service';
 import { DynamicComponent } from './dynamic/dynamic.component';
+import { GirlsDataService } from './common/services/girls-data.service';
 
 @Component({
   selector: 'app-root',
@@ -26,19 +27,16 @@ export class AppComponent implements OnInit, OnDestroy {
     this.myColor = color;
   }
 
-  public girls = [
-    { name: 'Ana' },
-    { name: 'Sofa' },
-    { name: 'Mila' },
-  ]
-
   public isShown = true;
+
+  public girls: any;
 
   public nameControl: FormControl;
   public fullNameControl: FormGroup;
   public usersListControl: FormGroup;
 
   constructor(
+    private _girlsService: GirlsDataService,
     private _formBuilder: FormBuilder,
     private _policiesService: PoliciesService,
     private viewContainerRef: ViewContainerRef,
@@ -48,6 +46,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
+    this.girls = this._girlsService.getAll();
+
     this._subscriptionPolicies = this.policies$.subscribe((policies: Policy[]) => {
       console.log('policies', policies);
       this.policies = policies;

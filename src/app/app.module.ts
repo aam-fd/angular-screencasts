@@ -13,6 +13,7 @@ import { ProjectionComponent } from './projection/projection.component';
 import { ColoryDirective } from './directives/colory.directive';
 import { DelayDirective } from './directives/delay.directive';
 import { DynamicComponent } from './dynamic/dynamic.component';
+import { GirlsDataService } from './common/services/girls-data.service';
 // import { policiesReducer } from './store/reducers/policies.reducer';
 
 
@@ -37,7 +38,9 @@ import { DynamicComponent } from './dynamic/dynamic.component';
     // [StoreModule.forRoot({ policies: policiesReducer })],
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [],
+  providers: [
+    GirlsDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
