@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { Policy } from './common/models/policy';
 import { PoliciesService } from './common/services/policies.service';
+import { DynamicComponent } from './dynamic/dynamic.component';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _policiesService: PoliciesService
+    private _policiesService: PoliciesService,
+    private viewContainerRef: ViewContainerRef,
+    private componentFactoryResolver: ComponentFactoryResolver
   ) {
     this.policies$ = this._policiesService.getPolicies();
   }
@@ -48,8 +51,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this._subscriptionPolicies = this.policies$.subscribe((policies: Policy[]) => {
       console.log('policies', policies);
       this.policies = policies;
-
     });
+
+    setTimeout(_ => {
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);
+      const componentRef = this.viewContainerRef.createComponent(componentFactory);
+    }, 3000)
 
     this.nameControl = new FormControl('Alex', [Validators.required, Validators.minLength(4)]); // первая [] - синхронный валидатор, вторая [] - асинхронный валидатор
     this.nameControl.valueChanges.subscribe((value) => console.log(value));
@@ -75,7 +82,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.usersListControl = this._formBuilder.group({
       animals: this._formBuilder.array([['cat'],['dog'],['bird']]),
     });
-
 
     this.usersListControl.valueChanges.subscribe((value) => console.log(value));
 
