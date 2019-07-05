@@ -1,11 +1,11 @@
 <h2>СИНТАКСИС ШАБЛОНОВ 2/8</h2>
 <h3>Data Binding</h3>
-<p>db.1 From the Component to the DOM</p>
+<p>From the Component to the DOM</p>
 <ul>
-  <li>Interpolation: {{ value }}</li>
-  <li>Property binding: [property]=”value”</li>
+  <li>2.1 Interpolation: {{ value }}</li>
+  <li>2.2 Property binding: [property]=”value”</li>
 </ul>
-<p>db.2 From the DOM to the Component</p>
+<p>2.3 From the DOM to the Component</p>
 <ul>
   <li>Event binding: (event)=”function”
     <ul>
@@ -15,12 +15,12 @@
     </ul>
   </li>
 </ul>
-<p>db.3 Two-way</p>
+<p>Two-way</p>
 <ul>
   <li>Two-way data binding: [(ngModel)]=”value”</li>
 </ul>
 
-<h3>Anchor - Работа с элементами по ссылке</h3>
+<h3>2.4 Anchor - Работа с элементами по ссылке</h3>
 <p [style.color]="myColor">Введите название цвета, чтобы изменить цвет текста</p>
 <input type="text" #anchorColor>
 <button (click)="changeColor(anchorColor.value)">Изменить цвет текста</button>
@@ -29,7 +29,7 @@
 <app-nested [user]="girls[0]"></app-nested>
 
 <h2>КОМПОНЕНТЫ И ДИРЕКТИВЫ 3/8</h2>
-<h3>Directive</h3>
+<h3>3.2 Директивы ngIf, ngFor</h3>
 <p>Дополнительная инструкция к компоненту, которая расширяет компонент;
   <br>директива является атрибутом для элемента;
   <br>* - характерна для специальных директив</p>
@@ -41,14 +41,14 @@
     {{i}}
   </li>
 </ul>
+
 <h3>3.3 Вывод событий из компонента</h3>
 <ol>
   <li *ngFor="let girl of girls">
     <app-nested [user]="girl" (userSelectEvent)="selectedUser = girl"></app-nested>
   </li>
 </ol>
-
-<h3>Nested component -> transfer data (декоратор @Output)</h3>
+<h4>Nested component -> transfer data (декоратор @Output)</h4>
 <p>td.2 from child/nested to parent (отобразится при клике): {{selectedUser?.name}}</p>
 
 <h3>3.4 Projection (проекция) через ng-content - удобно для гибкой проекции контента внутрь template</h3>
@@ -67,7 +67,7 @@
   #changecolor2="colory"
   ></app-nested>
 
-<h3>Структурная директива.</h3>
+<h3>3.6 Структурная директива.</h3>
 <p>* - обозначает структурную директиву. Что значит она может не только менять свойства элемента, но и манипулировать DOM (добавлять, удалять).</p>
 <div *ngFor="let delay of [1,2,3,4,5,6]">
   <div *appDelay="delay">Some text 1</div>
@@ -77,39 +77,57 @@
     <div>Some text 2</div>
   </ng-template>
 
-<h3>Экспорт контроллера директивы (опция exportAs)</h3>
+<h3>3.7 Экспорт контроллера директивы (опция exportAs)</h3>
 <button (click)="changecolor1.setRandomColor(); changecolor2.setRandomColor()">Также меняет цвет атрибут директив</button>
 
-<h3>Динамические компоненты</h3>
+<h3>3.8 Динамические компоненты</h3>
 <p>Выводится по умолчанию в конце страницы</p>
 
 <h2>СЕРВИСЫ, ВНЕДРЕНИЕ ЗАВИСИМОСТЕЙ 4/8</h2>
 -для хранения данных, для манипуляции с данными, для запросов к другим источникам данных.
 
-<h3>Создание и использование сервисов</h3>
-(паттерн Dependency Injection)
+<h3>4.1 Создание и использование сервисов (паттерн Dependency Injection)</h3>
 <ol>
   <li *ngFor="let girl of girls">
     {{ girl.name }}
   </li>
 </ol>
 
+<h3>4.2 Получение списка через сервис и Базовый CRUD (create, read, update, delete)</h3>
+<ul>
+  <li *ngFor="let girl of girls">
+    {{ girl.name }}
+    <span (click)="removeGirl(girl.name)">x</span>
+  </li>
+</ul>
+<input type="text" #girlName><button (click)="addGirl(girlName.value); girlName.value='';">Добавить!</button>
+
+<h3>4.3 Работа с HttpClient</h3>
+<h3>4.4 Разбор механизма внедрения зависимостей</h3>
+<h3>4.5 Создание Http интерсепторов</h3>
+<h3>4.6 Статический инжектор</h3>
+
+
 <h2>МАРШРУТИЗАТОР 5/8</h2>
-<h3></h3>
-<h3></h3>
-<h3></h3>
-<h3></h3>
+<h3>5.1 Роутер с параметрами</h3>
+<h3>5.2 Метод navigate</h3>
+<h3>5.3 Гарды</h3>
+<h3>5.4 Ленивая загрузка модулей</h3>
+<h3>5.5 Стратегии предзагрузки модулей</h3>
 
 <h2>РЕАКТИВНЫЕ ФОРМЫ 6/8</h2>
-<h3>Forms</h3>
-f.1 FormControl для одного инпута<br>
+
+<h3>6.1 FormControl для одного инпута</h3>
 <input [formControl]="nameControl"><br>
-f.2 FormGroup для нескольких <br>
+
+<h3>6.2 FormGroup для нескольких</h3>
 <fieldset [formGroup]="fullNameControl">
     <input formControlName="firstName" type="text">
-    <input formControlName="lastName" type="text">
+    <input form
+    ControlName="lastName" type="text">
 </fieldset>
-f.3 FormArray или FormBuilder для списка (например) инпутов
+
+<h3>6.3 FormArray или FormBuilder для списка (например) инпутов</h3>
 <form [formGroup]="usersListControl">
   <ul formArrayName="animals">
     <li *ngFor="let animal of usersListControl.controls.animals.controls; let i = index">
@@ -120,25 +138,22 @@ f.3 FormArray или FormBuilder для списка (например) инпу
   <button (click)="addUserControl()">Add user</button>
 </form>
 
+<h3>6.4 Создаем свой элемент формы</h3>
+
 <h2>UNIT-ТЕСТЫ 7/8</h2>
-<h3></h3>
-<h3></h3>
-<h3></h3>
-<h3></h3>
+<h3>7.1 Тестирование сервиса</h3>
+<h3>7.2 Тестирование пайп</h3>
+<h3>7.3 Тестирование httpClient</h3>
+<h3>7.4 Тестирование компонентов</h3>
+<h3>7.5 Тестирование директивы</h3>
 
 <h2>RXJS 8/8</h2>
-<h3></h3>
-<h3></h3>
-<h3></h3>
-<h3></h3>
-
-<h3>Получение списка через сервис и Базовый CRUD (create, read, update, delete)</h3>
-<ul>
-  <li *ngFor="let girl of girls">
-    {{ girl.name }}
-    <span (click)="removeGirl(girl.name)">x</span>
-  </li>
-</ul>
-<input type="text" #girlName><button (click)="addGirl(girlName.value); girlName.value='';">Добавить!</button>
+<h3>8.1 Фабрика создания Оbservable</h3>
+<h3>8.2 Другие способы создания Observable</h3>
+<h3>8.3 Методы фильтрации</h3>
+<h3>8.4 Методы объединения</h3>
+<h3>8.5 Методы трансформации</h3>
+<h3>8.6 Обработка ошибок</h3>
+<h3>8.7 Различные утилиты</h3>
 
 <router-outlet></router-outlet>
