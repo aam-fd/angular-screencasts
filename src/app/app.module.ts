@@ -14,6 +14,7 @@ import { ColoryDirective } from './directives/colory.directive';
 import { DelayDirective } from './directives/delay.directive';
 import { DynamicComponent } from './dynamic/dynamic.component';
 import { GirlsDataService } from './common/services/girls-data.service';
+import { ItemComponent } from './dynamic/item/item.component';
 // import { policiesReducer } from './store/reducers/policies.reducer';
 
 
@@ -24,10 +25,11 @@ import { GirlsDataService } from './common/services/girls-data.service';
     ProjectionComponent,
     ColoryDirective,
     DelayDirective,
-    DynamicComponent
+    DynamicComponent,
+    ItemComponent
   ],
   entryComponents: [
-    DynamicComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
