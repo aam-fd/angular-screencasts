@@ -6,19 +6,19 @@ import { ItemComponent } from './item/item.component';
   templateUrl: './dynamic.component.html',
   styleUrls: ['./dynamic.component.css']
 })
-export class DynamicComponent implements OnInit {
+export class DynamicComponent {
 
-  constructor(
-    private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+  // constructor(
+  //   private viewContainerRef: ViewContainerRef,
+  //   private componentFactoryResolver: ComponentFactoryResolver
 
-  ) { }
+  // ) { }
 
-  ngOnInit() {
-    setTimeout(_ => {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ItemComponent);
-      const componentRef =  this.viewContainerRef.createComponent(componentFactory);
-    }, 3000);
-  }
+  // ngOnInit() {
+  //   setTimeout(_ => {
+  //     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ItemComponent);
+  //     const componentRef =  this.viewContainerRef.createComponent(componentFactory);
+  //   }, 3000);
+  // }
 
 }

@@ -39,8 +39,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private _girlsService: GirlsDataService,
     private _formBuilder: FormBuilder,
     private _policiesService: PoliciesService,
-    private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private viewContainerRef: ViewContainerRef, // то куда добавляется динамический контент
+    private componentFactoryResolver: ComponentFactoryResolver // то что разрешит собрать компонент
   ) {
     this.policies$ = this._policiesService.getPolicies();
   }
@@ -54,9 +54,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.policies = policies;
     });
 
+    // Динамические компоненты - в месте куда выводим инжектируем ViewContainerRef (то куда будем добавлять), но также его можно получить из структурной директивы
+    // и ComponentFactoryResolver (тот кто соберет)
     setTimeout(_ => {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent);
-      const componentRef = this.viewContainerRef.createComponent(componentFactory);
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent); // фабрика для создания компонента
+      const componentRef = this.viewContainerRef.createComponent(componentFactory); // создать компонент внутри контейнера
     }, 3000)
 
     this.nameControl = new FormControl('Alex', [Validators.required, Validators.minLength(4)]); // первая [] - синхронный валидатор, вторая [] - асинхронный валидатор
