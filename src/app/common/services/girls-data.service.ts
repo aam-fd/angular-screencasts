@@ -1,4 +1,5 @@
 import { Girl } from '../models/girl';
+import { GirlClass } from '../classes/girl-class';
 
 export class GirlsDataService {
 
@@ -19,6 +20,8 @@ export class GirlsDataService {
   }
 
   public add(name: string): number {
-    return this.girls.push({ name });
+    const newGirl = new GirlClass(name);
+    console.log('new girl', newGirl);
+    return this.girls.push(newGirl);
   }
 }
