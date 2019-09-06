@@ -28,7 +28,8 @@ import { ItemComponent } from './dynamic/item/item.component';
     DynamicComponent,
     ItemComponent
   ],
-  entryComponents: [
+  entryComponents: [ // скомпилированы сразу, но добавлены динамически
+    DynamicComponent,
     ItemComponent,
   ],
   imports: [

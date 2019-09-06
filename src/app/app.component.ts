@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // и ComponentFactoryResolver (тот кто соберет)
     setTimeout(_ => {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DynamicComponent); // фабрика для создания компонента
-      const componentRef = this.viewContainerRef.createComponent(componentFactory); // создать компонент внутри контейнера
+      this.viewContainerRef.createComponent(componentFactory); // создать компонент внутри контейнера
     }, 3000)
 
     this.nameControl = new FormControl('Alex', [Validators.required, Validators.minLength(4)]); // первая [] - синхронный валидатор, вторая [] - асинхронный валидатор

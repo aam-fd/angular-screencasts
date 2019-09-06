@@ -1,6 +1,8 @@
+import { Girl } from '../models/girl';
+
 export class GirlsDataService {
 
-  public girls = [
+  public girls: Girl[] = [
     { name: 'Ana' },
     { name: 'Sofa' },
     { name: 'Mila' },
@@ -8,15 +10,15 @@ export class GirlsDataService {
 
   constructor() { }
 
-  public getAll() {
+  public getAll(): Girl[] {
     return this.girls;
   }
 
-  public remove(name: string) {
+  public remove(name: string): Girl[] {
     return this.girls = this.girls.filter(g => g.name !== name);
   }
 
-  public add(name: string) {
+  public add(name: string): number {
     return this.girls.push({ name });
   }
 }

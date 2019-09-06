@@ -8,7 +8,7 @@ export class DelayDirective implements OnInit {
   @Input() appDelay: number;
 
   // TemplateRef является дженериком - то, на что мы навессили 
-  // ViewContainerRef - обертка, которая создается вокрур нашей директивы
+  // ViewContainerRef - обертка, которая создается вокруг нашей директивы
   constructor(
     private template: TemplateRef<any>,
     private view: ViewContainerRef

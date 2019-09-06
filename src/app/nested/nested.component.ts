@@ -5,10 +5,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './nested.component.html',
   styleUrls: ['./nested.component.css']
 })
+
 export class NestedComponent implements OnInit {
 
   @Input('user') admin: Object;
-  @Output() userSelectEvent: EventEmitter<any> = new EventEmitter;
+  @Output() userSelectEvent: EventEmitter<any> = new EventEmitter; // через new создание
 
   constructor() { }
 
@@ -16,7 +17,7 @@ export class NestedComponent implements OnInit {
   }
 
   selectUser() {
-    this.userSelectEvent.emit();
+    this.userSelectEvent.emit(); // посылаем событие, пустое или с параметрами
   }
 
 }
